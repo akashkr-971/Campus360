@@ -166,6 +166,8 @@ include 'header2.php';
             color: #888;
             font-size: 0.8rem;
         }
+
+
     </style>
 </head>
 <body>
@@ -237,6 +239,112 @@ include 'header2.php';
             </div>
         </div>
     </div>
+    <div class="chat-container">
+        <div class="chat-box" id="chatBox">
+            <div class="chat-header">ReGenAI</div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">Hello! How can I help you today?</div>
+            </div>
+            <div class="chat-input-container">
+                <input type="text" class="chat-input" id="userInput" placeholder="Type your message...">
+                <button class="chat-send" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+        <button class="chat-button" id="toggleChat">Chat with ReGenAI</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatBox = document.getElementById("chatBox");
+            const chatContainer = document.querySelector(".chat-container");
+            const userInput = document.getElementById("userInput");
+            
+            document.getElementById("toggleChat").addEventListener("click", function(e) {
+                e.stopPropagation();
+                chatBox.style.display = chatBox.style.display === "none" ? "block" : "none";
+                if (chatBox.style.display === "block") {
+                    userInput.focus();
+                }
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (chatBox.style.display === "block" && 
+                    !chatContainer.contains(e.target)) {
+                    chatBox.style.display = "none";
+                }
+            });
+            
+            chatBox.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
+
+        function sendMessage() {
+            let userInput = document.getElementById("userInput");
+            let userMessage = userInput.value.trim();
+            
+            if (userMessage === "") return;
+            
+            const chatMessages = document.getElementById("chatMessages");
+            
+            chatMessages.innerHTML += `<div class="message user-message">${userMessage}</div>`;
+            
+            const typingIndicator = `<div class="message bot-message" id="typing">Typing...</div>`;
+            chatMessages.innerHTML += typingIndicator;
+            
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            userInput.value = "";
+            userInput.focus();
+
+            fetch("http://localhost:5000/chat", {
+                method: "POST",
+                body: JSON.stringify({ message: userMessage }),
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "Access-Control-Allow-Origin": "*"
+                }
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Received data:', data);
+                document.getElementById("typing").remove();
+                
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+                
+                const formattedResponse = data.response
+                    .replace(/\n/g, '<br>')
+                    .replace(/ {2,}/g, function(match) {
+                        return '&nbsp;'.repeat(match.length);
+                    });
+                
+                chatMessages.innerHTML += `<div class="message bot-message">${formattedResponse}</div>`;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById("typing")?.remove();
+                
+                chatMessages.innerHTML += `<div class="message bot-message">Sorry, there was an error connecting to the AI service. Please try again later.</div>`;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            });
+        }
+
+        document.getElementById("userInput").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                sendMessage();
+            }
+        });
+    </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

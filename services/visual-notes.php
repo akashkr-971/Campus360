@@ -1,6 +1,6 @@
 <?php
 $pageTitle = 'Visual Notes';
-include $_SERVER['DOCUMENT_ROOT'] . '/Campus360/includes/layout.php';
+ob_start();
 ?>
 
 <div class="service-content">
@@ -21,8 +21,55 @@ include $_SERVER['DOCUMENT_ROOT'] . '/Campus360/includes/layout.php';
             <div class="col-md-4">
                 <div class="card shadow-sm border-0 mb-4">
                     <div class="card-body">
-                        <h5 class="card-title mb-3">Select Date</h5>
+                        <h5 class="card-title mb-3">Select Video Date</h5>
                         <div id="datepicker"></div>
+                        <ul class="list-unstyled mt-3">
+                            <li>
+                                <button class="btn video-date-button" data-date="2025-02-26">
+                                    2025-02-26 <i class="bi bi-camera-video"></i> Algorithm Class
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn video-date-button" data-date="2025-02-27">
+                                    2025-02-27 <i class="bi bi-camera-video"></i> Data Mining Class
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn video-date-button" data-date="2025-02-28">
+                                    2025-02-28 <i class="bi bi-camera-video"></i> Cryptography Class
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn video-date-button" data-date="2025-03-01">
+                                    2025-03-01 <i class="bi bi-camera-video"></i> Algorithm Class
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn video-date-button" data-date="2025-03-02">
+                                    2025-03-02 <i class="bi bi-camera-video"></i> Data Mining Class
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn video-date-button" data-date="2025-03-03">
+                                    2025-03-03 <i class="bi bi-camera-video"></i> Cryptography Class
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn video-date-button" data-date="2025-03-04">
+                                    2025-03-04 <i class="bi bi-camera-video"></i> Algorithm Class
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn video-date-button" data-date="2025-03-05">
+                                    2025-03-05 <i class="bi bi-camera-video"></i> Data Mining Class
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn video-date-button" data-date="2025-03-06">
+                                    2025-03-06 <i class="bi bi-camera-video"></i> Cryptography Class
+                                </button>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
@@ -62,8 +109,15 @@ include $_SERVER['DOCUMENT_ROOT'] . '/Campus360/includes/layout.php';
                 <div class="card shadow-sm border-0">
                     <div class="card-body">
                         <h5 class="card-title mb-4">Class Videos</h5>
-                        <div id="videosList">
+                        <div id="videosList" class="mb-4">
                             <!-- Videos will be loaded here based on selected date -->
+                        </div>
+                        <div id="videoPlayer">
+                            <video id="mainVideo" width="100%" controls>
+                                <source src="" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div id="videoDescription" class="mt-2"></div>
                         </div>
                     </div>
                 </div>
@@ -73,54 +127,125 @@ include $_SERVER['DOCUMENT_ROOT'] . '/Campus360/includes/layout.php';
 </div>
 
 <style>
-.video-card {
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 1rem;
-    transition: transform 0.2s;
-}
-
-.video-card:hover {
-    transform: translateY(-2px);
-}
-
-.video-thumbnail {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.video-info {
-    padding: 1rem;
-}
-
-.subject-badge {
-    font-size: 0.8rem;
-    padding: 0.3rem 0.6rem;
-    border-radius: 4px;
-    background-color: #e9ecef;
-    color: #495057;
-    margin-bottom: 0.5rem;
-    display: inline-block;
-}
-
-#datepicker .ui-datepicker {
-    width: 100%;
-}
-
-.ui-datepicker-calendar .has-video {
-    background-color: #d4edda;
-    border-radius: 50%;
-}
+    .video-card {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 1rem;
+        transition: transform 0.2s;
+        cursor: pointer;
+    }
+    .video-card:hover {
+        transform: translateY(-2px);
+    }
+    .video-thumbnail {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    .video-info {
+        padding: 1rem;
+    }
+    .subject-badge {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+        border-radius: 4px;
+        background-color: #e9ecef;
+        color: #495057;
+        margin-bottom: 0.5rem;
+        display: inline-block;
+    }
+    #datepicker .ui-datepicker {
+        width: 100%;
+    }
+    .ui-datepicker-calendar .has-video {
+        background-color: #d4edda;
+        border-radius: 50%;
+    }
+    .video-date-button {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+        background-color: #f0f0f0;
+        border: 1px solid #ddd;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 0.5rem;
+    }
+    .video-date-button:hover {
+        color: #0056b3;
+        background-color: #e9ecef;
+        border-color: #ccc;
+    }
 </style>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <script>
+// Sample videos data (single source of truth)
+const sampleVideos = {
+    '2025-02-26': [
+        {
+            title: 'Algorithm and Design - Sorting Algorithms',
+            videoUrl: '../static/video/algorithm.mp4'
+        }
+    ],
+    '2025-02-27': [
+        {
+            title: 'Data Mining - Introduction',
+            videoUrl: '../static/video/datamining.mp4'
+        }
+    ],
+    '2025-02-28': [
+        {
+            title: 'Cryptography - Introduction',
+            videoUrl: '../static/video/cryptography.mp4'
+        }
+    ],
+    '2025-03-01': [
+        {
+            title: 'Algorithm and Design - Sorting Algorithms',
+            videoUrl: '../static/video/algorithm.mp4'
+        }
+    ],
+    '2025-03-02': [
+        {
+            title: 'Data Mining - Introduction',
+            videoUrl: '../static/video/datamining.mp4'
+        }
+    ],
+    '2025-03-03': [
+        {
+            title: 'Cryptography - Introduction',
+            videoUrl: '../static/video/cryptography.mp4'
+        }
+    ],
+    '2025-03-04': [
+        {
+            title: 'Algorithm and Design - Sorting Algorithms',
+            videoUrl: '../static/video/algorithm.mp4'
+        }
+    ],
+    '2025-03-05': [
+        {
+            title: 'Data Mining - Introduction',
+            videoUrl: '../static/video/datamining.mp4'
+        }
+    ],
+    '2025-03-06': [
+        {
+            title: 'Cryptography - Advanced Concepts',
+            videoUrl: '../static/video/cryptography.mp4'
+        }
+    ]
+};
+
 $(document).ready(function() {
-    // Initialize datepicker
+    // Initialize the datepicker
     $("#datepicker").datepicker({
         dateFormat: 'yy-mm-dd',
         onSelect: function(dateText) {
@@ -128,25 +253,11 @@ $(document).ready(function() {
         }
     });
 
-    // Sample video data (replace with actual database data)
-    const sampleVideos = {
-        '2025-02-24': [
-            {
-                subject: 'IMCA501',
-                title: 'Data Mining - Classification Algorithms',
-                thumbnail: 'path/to/thumbnail1.jpg',
-                videoUrl: 'path/to/video1.mp4',
-                description: 'Lecture on various classification algorithms in data mining.'
-            },
-            {
-                subject: 'IMCA502',
-                title: 'Data Structures - Binary Trees',
-                thumbnail: 'path/to/thumbnail2.jpg',
-                videoUrl: 'path/to/video2.mp4',
-                description: 'Introduction to binary trees and their operations.'
-            }
-        ]
-    };
+    // Event delegation for date buttons (only those with data-date attribute)
+    $(document).on('click', '.video-date-button[data-date]', function() {
+        const date = $(this).data('date');
+        loadVideos(date);
+    });
 
     function loadVideos(date) {
         const videos = sampleVideos[date] || [];
@@ -155,34 +266,46 @@ $(document).ready(function() {
 
         if (videos.length === 0) {
             videosList.html('<p class="text-muted">No videos available for this date.</p>');
+            $('#mainVideo source').attr('src', '');
+            $('#mainVideo')[0].load();
             return;
         }
 
-        videos.forEach(video => {
-            videosList.append(`
-                <div class="video-card">
-                    <video class="video-thumbnail" poster="${video.thumbnail}">
-                        <source src="${video.videoUrl}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="video-info">
-                        <span class="subject-badge">${video.subject}</span>
-                        <h5 class="mb-2">${video.title}</h5>
-                        <p class="text-muted mb-0">${video.description}</p>
-                    </div>
-                </div>
-            `);
+        videos.forEach((video) => {
+            // Create a video selection button with a different class to avoid conflicts
+            const videoButton = $(`<button class="btn video-button mb-2" data-video-url="${video.videoUrl}">${video.title}</button>`);
+            
+            // Attach a click event handler that stops propagation
+            videoButton.on('click', function(e) {
+                e.stopPropagation(); // Prevent triggering the date button handler
+                const videoUrl = $(this).data('video-url');
+                const videoElement = $('#mainVideo')[0];
+                $('#mainVideo source').attr('src', videoUrl);
+                videoElement.load();
+                videoElement.play();
+            });
+
+            videosList.append(videoButton);
         });
+
+        // Automatically load and play the first video for the selected date
+        if (videos.length > 0) {
+            const firstVideoUrl = videos[0].videoUrl;
+            const videoElement = $('#mainVideo')[0];
+            $('#mainVideo source').attr('src', firstVideoUrl);
+            videoElement.load();
+            videoElement.play();
+        }
     }
 
-    // Handle video upload
-    $('#uploadForm').on('submit', function(e) {
-        e.preventDefault();
-        // Add your upload logic here
-        alert('Video upload functionality will be implemented with backend integration.');
-    });
-
-    // Load initial videos for current date
-    loadVideos($("#datepicker").datepicker('getDate'));
+    // Load videos for a default date (e.g., first available date)
+    const defaultDate = '2025-02-26'; // Set a default date with videos
+    $("#datepicker").datepicker('setDate', defaultDate);
+    loadVideos(defaultDate);
 });
 </script>
+
+<?php
+$content = ob_get_clean();
+include $_SERVER['DOCUMENT_ROOT'] . '/Campus360/includes/layout.php';
+?>

@@ -174,6 +174,12 @@ $baseUrl = '/Campus360/';
                 </a>
             </li>
             <li class="nav-item">
+                <a href="<?php echo $baseUrl; ?>services/onlineapplication.php" class="nav-link">
+                    <i class="bi bi-journal-text"></i>
+                    <span class="d-sm-inline">Online Application</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="<?php echo $baseUrl; ?>services/notes.php" class="nav-link">
                     <i class="bi bi-journal-text"></i>
                     <span class="d-sm-inline">Notes</span>
@@ -183,6 +189,18 @@ $baseUrl = '/Campus360/';
                 <a href="<?php echo $baseUrl; ?>services/forum.php" class="nav-link">
                     <i class="bi bi-chat-dots"></i>
                     <span class="d-sm-inline">Discussion Forum</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?php echo $baseUrl; ?>services/chatbot.php" class="nav-link">
+                    <i class="bi bi-robot"></i>
+                    <span class="d-sm-inline">ReGenAI</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?php echo $baseUrl; ?>services/subject-planner.php" class="nav-link">
+                    <i class="bi bi-calendar-plus"></i>
+                    <span class="d-sm-inline">Subject Planner</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -199,7 +217,7 @@ $baseUrl = '/Campus360/';
         <button class="btn" type="button" id="sidebarToggle">
             <i class="bi bi-list"></i>
         </button>
-        <?php echo $content; ?>
+        <?php echo isset($content) ? $content : ''; ?>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -210,34 +228,48 @@ $baseUrl = '/Campus360/';
         const sidebarToggle = document.getElementById('sidebarToggle');
         let isCollapsed = false;
 
+        // Function to toggle collapse state
         function toggleSidebar() {
             isCollapsed = !isCollapsed;
             sidebar.classList.toggle('collapsed', isCollapsed);
             mainContent.classList.toggle('expanded', isCollapsed);
         }
 
+        // Determine if the current page should force the sidebar to remain expanded
+        const currentPath = window.location.pathname;
+        // List pages that should always have the sidebar expanded
+        const forceExpandedPages = ['chatbot.php', 'onlineapplication.php'];
+        let forceExpanded = forceExpandedPages.some(page => currentPath.includes(page));
+
+        // Desktop behavior (for window width > 768)
         if (window.innerWidth > 768) {
-            sidebar.addEventListener('mouseenter', function() {
+            if (!forceExpanded) {
+                // Collapse/expand on hover for most pages
+                sidebar.addEventListener('mouseenter', function() {
+                    sidebar.classList.remove('collapsed');
+                    mainContent.classList.remove('expanded');
+                });
+
+                sidebar.addEventListener('mouseleave', function() {
+                    sidebar.classList.add('collapsed');
+                    mainContent.classList.add('expanded');
+                });
+
+                // Set initial state as collapsed (toggle once)
+                toggleSidebar();
+            } else {
+                // Force expanded state for specific pages
                 sidebar.classList.remove('collapsed');
                 mainContent.classList.remove('expanded');
-            });
-
-            sidebar.addEventListener('mouseleave', function() {
-                sidebar.classList.add('collapsed');
-                mainContent.classList.add('expanded');
-            });
-
-            // Set initial state for desktop
-            toggleSidebar();
+            }
         }
 
-        // Toggle button for mobile
+        // Toggle button for mobile devices
         sidebarToggle.addEventListener('click', function() {
             toggleSidebar();
         });
 
-        // Set active link
-        const currentPath = window.location.pathname;
+        // Set active navigation link based on current URL
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
             if (currentPath.includes(link.getAttribute('href'))) {
@@ -245,6 +277,11 @@ $baseUrl = '/Campus360/';
             }
         });
     });
+
+    function openChatbot(botName) {
+        // Logic to open the chatbot interface
+        alert('Opening chatbot: ' + botName);
+    }
     </script>
     <?php echo isset($additionalScripts) ? $additionalScripts : ''; ?>
 </body>

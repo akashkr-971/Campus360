@@ -31,7 +31,7 @@ if(isset($_POST['login-button'])) {
                         header("Location: facultyhome.php");
                         break;
                     default:
-                        header("Location: studenthome.php");
+                        header("Location: services/lms.php");
                         break;
                 }
                 exit();

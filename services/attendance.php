@@ -1,6 +1,6 @@
 <?php
 $pageTitle = 'Attendance';
-include $_SERVER['DOCUMENT_ROOT'] . '/Campus360/includes/layout.php';
+ob_start();
 ?>
 
 <div class="service-content">
@@ -279,3 +279,8 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCalendar();
 });
 </script>
+
+<?php
+$content = ob_get_clean();
+include $_SERVER['DOCUMENT_ROOT'] . '/Campus360/includes/layout.php';
+?>

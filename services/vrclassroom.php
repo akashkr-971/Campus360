@@ -1,122 +1,121 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtual Reality Classroom</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="theme.css">
-</head>
-<body>
-<?php include '../header.php'; ?>
+<?php
+$pageTitle = 'VR Classroom';
+$additionalHead = '
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+';
+ob_start();
+?>
 
-<div class="container py-5" style="margin-top:50px">
+<div class="service-content">
     <div class="row mb-5">
         <div class="col-12 text-center">
-            <h1 class="display-4 fw-bold">Virtual Reality Classroom</h1>
+            <h1 class="display-4 fw-bold">VR Classroom</h1>
             <div class="divider d-flex align-items-center justify-content-center mb-4">
                 <div class="line bg-primary" style="width: 50px; height: 3px;"></div>
-                <div class="mx-3"><i class="bi bi-display text-primary"></i></div>
+                <div class="mx-3"><i class="bi bi-briefcase-fill text-primary"></i></div>
                 <div class="line bg-primary" style="width: 50px; height: 3px;"></div>
             </div>
         </div>
-    </div>
-
-    <div class="row g-4">
-        <div class="col-lg-8">
-            <div class="card shadow-sm mb-4">
-                <div class="card-body">
-                    <h3>Available VR Sessions</h3>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Course</th>
-                                    <th>Time</th>
-                                    <th>Instructor</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Human Anatomy</td>
-                                    <td>10:00 AM</td>
-                                    <td>Dr. Smith</td>
-                                    <td><button class="btn btn-sm btn-primary">Join</button></td>
-                                </tr>
-                                <tr>
-                                    <td>Architecture Design</td>
-                                    <td>2:00 PM</td>
-                                    <td>Prof. Johnson</td>
-                                    <td><button class="btn btn-sm btn-primary">Join</button></td>
-                                </tr>
-                                <tr>
-                                    <td>Chemistry Lab</td>
-                                    <td>3:30 PM</td>
-                                    <td>Dr. Brown</td>
-                                    <td><button class="btn btn-sm btn-primary">Join</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
+    </div>  
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="card-title mb-0">Available VR Sessions</h5>
                     </div>
-                </div>
-            </div>
-
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h3>Featured Experience</h3>
-                    <div class="ratio ratio-16x9 mb-3">
-                        <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac" class="img-fluid rounded" alt="VR Experience">
-                    </div>
-                    <h4>Interactive Solar System Tour</h4>
-                    <p>Explore the wonders of our solar system in this immersive VR experience. Travel between planets, observe astronomical phenomena, and learn about space exploration.</p>
-                    <button class="btn btn-primary">Start Experience</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4">
-            <div class="card shadow-sm mb-4">
-                <div class="card-body">
-                    <h3>System Requirements</h3>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">VR Headset (Oculus/HTC Vive)</li>
-                        <li class="list-group-item">Stable Internet Connection</li>
-                        <li class="list-group-item">Windows 10 or later</li>
-                        <li class="list-group-item">8GB RAM minimum</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h3>Quick Guide</h3>
-                    <div class="accordion" id="vrGuide">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#setup">
-                                    Setup Instructions
-                                </button>
-                            </h2>
-                            <div id="setup" class="accordion-collapse collapse show">
-                                <div class="accordion-body">
-                                    Step-by-step guide to set up your VR equipment...
+                    <div class="card-body">
+                        <div class="vr-session mb-4 p-3 border rounded">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h4>3D Model Design Workshop</h4>
+                                    <p class="text-muted mb-2">Learn 3D modeling in an immersive environment</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-success me-2">Live Now</span>
+                                        <span class="badge bg-info">25 Participants</span>
+                                    </div>
+                                    <small class="text-muted">Instructor: Prof. Anderson</small>
                                 </div>
+                                <button class="btn btn-primary btn-join-session">Join Session</button>
                             </div>
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#controls">
-                                    Controls Guide
-                                </button>
-                            </h2>
-                            <div id="controls" class="accordion-collapse collapse">
-                                <div class="accordion-body">
-                                    Learn how to navigate in VR space...
+
+                        <div class="vr-session mb-4 p-3 border rounded">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h4>Virtual Chemistry Lab</h4>
+                                    <p class="text-muted mb-2">Conduct experiments in a safe VR environment</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-warning me-2">Starting in 30m</span>
+                                        <span class="badge bg-info">15 Participants</span>
+                                    </div>
+                                    <small class="text-muted">Instructor: Dr. Martinez</small>
                                 </div>
+                                <button class="btn btn-outline-primary btn-join-session">Join Waiting Room</button>
                             </div>
+                        </div>
+
+                        <div class="vr-session p-3 border rounded">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h4>Architecture Visualization</h4>
+                                    <p class="text-muted mb-2">Explore architectural designs in VR</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-secondary me-2">Scheduled</span>
+                                        <span class="badge bg-info">30 Participants</span>
+                                    </div>
+                                    <small class="text-muted">Instructor: Prof. Thompson</small>
+                                </div>
+                                <button class="btn btn-outline-primary btn-join-session">Register</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="card-title mb-0">System Requirements</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <i class="bi bi-gpu-card me-2"></i>
+                                Graphics: NVIDIA GTX 1060 or better
+                            </li>
+                            <li class="list-group-item">
+                                <i class="bi bi-cpu me-2"></i>
+                                Processor: Intel i5 or better
+                            </li>
+                            <li class="list-group-item">
+                                <i class="bi bi-memory me-2"></i>
+                                RAM: 8GB minimum
+                            </li>
+                            <li class="list-group-item">
+                                <i class="bi bi-wifi me-2"></i>
+                                Internet: 10 Mbps or faster
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="card-title mb-0">Quick Setup</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-outline-primary btn-download-client">
+                                <i class="bi bi-download me-2"></i>Download VR Client
+                            </button>
+                            <button class="btn btn-outline-info">
+                                <i class="bi bi-gear me-2"></i>Setup Guide
+                            </button>
+                            <button class="btn btn-outline-secondary">
+                                <i class="bi bi-question-circle me-2"></i>Help & Support
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -125,8 +124,8 @@
     </div>
 </div>
 
-<?php include '../footer.php'; ?>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<?php
+$content = ob_get_clean();
+$additionalScripts = '<script src="../js/service-interactions.js"></script>';
+include '../includes/layout.php';
+?>

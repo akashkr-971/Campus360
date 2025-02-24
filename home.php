@@ -184,7 +184,7 @@
         
         <div class="row align-items-center">
             <div class="col-lg-6 mb-4 mb-lg-0">
-                <img src="static/navigation-img.jpg" alt="Campus Navigation" class="img-fluid rounded shadow">
+                <img src="static/navigation.png" alt="Campus Navigation" style="width:80%;height:auto;" class="img-fluid rounded shadow">
             </div>
             <div class="col-lg-6">
                 <h3 class="mb-4">Navigate Your Campus Effortlessly</h3>
@@ -192,8 +192,7 @@
                 <p class="lead mb-4">With real-time updates and customizable routes, you'll never be lost on campus. Stay informed and connected as you explore everything your university has to offer.</p>
                 
                 <div class="d-flex gap-3">
-                    <a href="#services" class="btn btn-primary">Learn More</a>
-                    <a href="#contact" class="btn btn-outline-primary">Contact Us</a>
+                    <a href="navigation.php" class="btn btn-primary">Explore</a>
                 </div>
             </div>
         </div>
@@ -220,7 +219,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title">Scholarship Portal</h5>
                             <p class="card-text">Apply for scholarships and track your eligibility status.</p>
-                            <p class="lead">Our Scholarship Portal simplifies the process of applying for scholarships.</p>
+                            <p class="lead">Our Scholarship Portal simplifies the process of applying for scholarships, easing student burden</p>
                         </div>
                     </div>
                 </div>
@@ -253,7 +252,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title">Stress Management</h5>
                             <p class="card-text">Tools and games to help you relax and manage stress.</p>
-                            <p class="lead">Stress Management tools include relaxing games and activities designed to help you unwind and manage stress effectively.</p>
+                            <p class="lead">Stress Management tools offer relaxing games and activities to help you unwind and manage stress effectively.</p>
                         </div>
                     </div>
                 </div>
@@ -275,7 +274,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title">Notes Sharing</h5>
                             <p class="card-text">Share and access study materials with peers.</p>
-                            <p class="lead">Our Notes Sharing platform allows you to share and access study materials from peers.</p>
+                            <p class="lead">Our Notes Sharing platform allows you to share and access study materials from peers, making learning more efficient.</p>
                         </div>
                     </div>
                 </div>

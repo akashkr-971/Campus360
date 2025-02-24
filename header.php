@@ -27,6 +27,9 @@
                     <li class="nav-item">
                         <button onclick="showDemoForm()" class="nav-link btn btn-primary text-white px-4" style="background-color: blue; transition: background-color 0.3s;">Schedule a Demo</button>
                     </li>
+                    <li class="nav-item">
+                        <button onclick=window.open("login.php") class="nav-link btn btn-primary text-white px-4" style="background-color: blue; transition: background-color 0.3s;">Test Website</button>
+                    </li>
                 </ul>
             </div>
         </div>

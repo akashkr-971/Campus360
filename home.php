@@ -169,7 +169,7 @@
     </section>
 
     <!-- Campus Navigation Section -->
-    <section id="campus" class="py-5 bg-light">
+    <section id="campus" class="py-5 bg-white">
     <div class="container">
         <div class="row text-center mb-5">
             <div class="col-12">
@@ -183,9 +183,6 @@
         </div>
         
         <div class="row align-items-center">
-            <div class="col-lg-6 mb-4 mb-lg-0">
-                <img src="static/navigation.png" alt="Campus Navigation" style="width:80%;height:auto;" class="img-fluid rounded shadow">
-            </div>
             <div class="col-lg-6">
                 <h3 class="mb-4">Navigate Your Campus Effortlessly</h3>
                 <p class="lead mb-4">Discover our intuitive navigation tools designed to help you find your way around campus with ease. Whether you're looking for lecture halls, libraries, or student centers, our platform provides detailed maps and information to guide you.</p>
@@ -194,6 +191,9 @@
                 <div class="d-flex gap-3">
                     <a href="navigation.php" class="btn btn-primary">Explore</a>
                 </div>
+            </div>
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="static/navigation.png" alt="Campus Navigation" style="width:80%;height:auto;margin-left:100px;" class="img-fluid rounded shadow">
             </div>
         </div>
     </div>
@@ -285,7 +285,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title">Peer Forum</h5>
                             <p class="card-text">Discuss topics and collaborate with classmates.</p>
-                            <p class="lead">Our Peer Forum is a space for discussion and collaboration, enabling you to connect with classmates on various topics.</p>
+                            <p class="lead">Our Peer Forum is a space for discussion and collaboration, enabling you to connect with peers on various topics.</p>
                         </div>
                     </div>
                 </div>
@@ -304,117 +304,122 @@
             </div>
         </div>
     </section>
+
+    <!-- Package Section -->
+
+    <?php include 'package.php'; ?>
+
     <!-- Contact Form Section -->
-    <section id="contact" class="py-5">
-        <div class="container">
-            <div class="row text-center mb-5">
-                <div class="col-12">
-                    <h2 class="display-5 fw-bold mb-3">Contact Us</h2>
-                    <div class="divider d-flex align-items-center justify-content-center mb-4">
-                        <div class="line bg-primary" style="width: 50px; height: 3px;"></div>
-                        <div class="mx-3"><i class="bi bi-envelope-fill text-primary"></i></div>
-                        <div class="line bg-primary" style="width: 50px; height: 3px;"></div>
+    <section id="contact" class="py-5"  style="background-color: #f5f5f5;">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="display-5 fw-bold mb-3">Contact Us</h2>
+                <div class="divider d-flex align-items-center justify-content-center mb-4">
+                    <div class="line bg-primary" style="width: 50px; height: 3px;"></div>
+                    <div class="mx-3"><i class="bi bi-envelope-fill text-primary"></i></div>
+                    <div class="line bg-primary" style="width: 50px; height: 3px;"></div>
+                </div>
+                <p class="lead text-muted">Reach out for support, inquiries, or feedback</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-body p-4">
+                        <form id="contactForm" method="post" action="contact_process.php">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name" class="form-label">Your Name</label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">Email Address</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="phone" class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="subject" class="form-label">Subject</label>
+                                        <select class="form-select" id="subject" name="subject" required>
+                                            <option value="">Select a subject</option>
+                                            <option value="general">General Inquiry</option>
+                                            <option value="support">Technical Support</option>
+                                            <option value="demo">Demo Request</option>
+                                            <option value="feedback">Feedback</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="message" class="form-label">Message</label>
+                                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-lg w-100">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <p class="lead text-muted">Reach out for support, inquiries, or feedback</p>
                 </div>
             </div>
 
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card shadow-sm">
-                        <div class="card-body p-4">
-                            <form id="contactForm" method="post" action="contact_process.php">
-                                <div class="row g-4">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="name" class="form-label">Your Name</label>
-                                            <input type="text" class="form-control" id="name" name="name" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="email" class="form-label">Email Address</label>
-                                            <input type="email" class="form-control" id="email" name="email" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="phone" class="form-label">Phone Number</label>
-                                            <input type="tel" class="form-control" id="phone" name="phone">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="subject" class="form-label">Subject</label>
-                                            <select class="form-select" id="subject" name="subject" required>
-                                                <option value="">Select a subject</option>
-                                                <option value="general">General Inquiry</option>
-                                                <option value="support">Technical Support</option>
-                                                <option value="demo">Demo Request</option>
-                                                <option value="feedback">Feedback</option>
-                                                <option value="other">Other</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="message" class="form-label">Message</label>
-                                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <button type="submit" class="btn btn-primary btn-lg w-100">Send Message</button>
-                                    </div>
-                                </div>
-                            </form>
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h4 class="mb-4">Contact Information</h4>
+                        
+                        <div class="d-flex mb-4">
+                            <i class="bi bi-geo-alt-fill text-primary fs-4 me-3"></i>
+                            <div>
+                                <h5 class="mb-1">Address</h5>
+                                <p class="mb-0">456 Campus Drive, Education City, USA</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <h4 class="mb-4">Contact Information</h4>
-                            
-                            <div class="d-flex mb-4">
-                                <i class="bi bi-geo-alt-fill text-primary fs-4 me-3"></i>
-                                <div>
-                                    <h5 class="mb-1">Address</h5>
-                                    <p class="mb-0">456 Campus Drive, Education City, USA</p>
-                                </div>
+                        <div class="d-flex mb-4">
+                            <i class="bi bi-telephone-fill text-primary fs-4 me-3"></i>
+                            <div>
+                                <h5 class="mb-1">Phone</h5>
+                                <p class="mb-0">Support: +1 800 123 4567</p>
                             </div>
+                        </div>
 
-                            <div class="d-flex mb-4">
-                                <i class="bi bi-telephone-fill text-primary fs-4 me-3"></i>
-                                <div>
-                                    <h5 class="mb-1">Phone</h5>
-                                    <p class="mb-0">Support: +1 800 123 4567</p>
-                                </div>
+                        <div class="d-flex mb-4">
+                            <i class="bi bi-envelope-fill text-primary fs-4 me-3"></i>
+                            <div>
+                                <h5 class="mb-1">Email</h5>
+                                <p class="mb-0">support@campus360.com</p>
                             </div>
+                        </div>
 
-                            <div class="d-flex mb-4">
-                                <i class="bi bi-envelope-fill text-primary fs-4 me-3"></i>
-                                <div>
-                                    <h5 class="mb-1">Email</h5>
-                                    <p class="mb-0">support@campus360.com</p>
-                                </div>
-                            </div>
+                        <hr>
 
-                            <hr>
-
-                            <h5 class="mb-3">Follow Us</h5>
-                            <div class="d-flex gap-3">
-                                <a href="#" class="text-primary fs-4"><i class="bi bi-facebook"></i></a>
-                                <a href="#" class="text-primary fs-4"><i class="bi bi-twitter"></i></a>
-                                <a href="#" class="text-primary fs-4"><i class="bi bi-linkedin"></i></a>
-                                <a href="#" class="text-primary fs-4"><i class="bi bi-instagram"></i></a>
-                            </div>
+                        <h5 class="mb-3">Follow Us</h5>
+                        <div class="d-flex gap-3">
+                            <a href="#" class="text-primary fs-4"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="text-primary fs-4"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="text-primary fs-4"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" class="text-primary fs-4"><i class="bi bi-instagram"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <?php include 'footer.php'; ?>
 

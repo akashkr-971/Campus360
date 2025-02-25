@@ -181,7 +181,7 @@ $baseUrl = '/Campus360/';
             </li>
             <li class="nav-item">
                 <a href="<?php echo $baseUrl; ?>services/notes.php" class="nav-link">
-                    <i class="bi bi-journal-text"></i>
+                    <i class="bi bi-book-fill"></i>
                     <span class="d-sm-inline">Notes</span>
                 </a>
             </li>
@@ -189,6 +189,24 @@ $baseUrl = '/Campus360/';
                 <a href="<?php echo $baseUrl; ?>services/forum.php" class="nav-link">
                     <i class="bi bi-chat-dots"></i>
                     <span class="d-sm-inline">Discussion Forum</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?php echo $baseUrl; ?>services/qrcode.php" class="nav-link">
+                    <i class="bi bi-qr-code"></i>
+                    <span class="d-sm-inline">Qr cloud storage</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?php echo $baseUrl; ?>services/mentor.php" class="nav-link">
+                    <i class="bi bi-question-circle"></i>
+                    <span class="d-sm-inline">Mentor</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?php echo $baseUrl; ?>services/mental.php" class="nav-link">
+                    <i class="bi bi-headset"></i>
+                    <span class="d-sm-inline">Mental support</span>
                 </a>
             </li>
             <li class="nav-item">

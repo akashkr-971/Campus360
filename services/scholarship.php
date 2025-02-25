@@ -26,7 +26,7 @@ ob_start();
                             <h4>Merit Scholarship 2025</h4>
                             <p class="text-muted">For outstanding academic achievement</p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="badge bg-success">Amount: $5000</span>
+                                <span class="badge bg-success">Amount: ₹5000</span>
                                 <button class="btn btn-primary">Apply Now</button>
                             </div>
                         </div>
@@ -34,7 +34,7 @@ ob_start();
                             <h4>Research Grant</h4>
                             <p class="text-muted">For innovative research projects</p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="badge bg-success">Amount: $3000</span>
+                                <span class="badge bg-success">Amount: ₹3000</span>
                                 <button class="btn btn-primary">Apply Now</button>
                             </div>
                         </div>

@@ -250,7 +250,7 @@ include 'header2.php';
                 <button class="chat-send" onclick="sendMessage()">Send</button>
             </div>
         </div>
-        <button class="chat-button" id="toggleChat">Chat with ReGenAI</button>
+        <button class="chat-button" id="toggleChat">Chat With ReGenAI</button>
     </div>
 
     <script>

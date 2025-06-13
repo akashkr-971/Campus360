@@ -10,7 +10,7 @@ CORS(app)
 OLLAMA_API_URL = "http://localhost:11434/api/generate"
 
 def get_ollama_response(prompt, model_name="ReGenAI"):
-    """Fetch response from Ollama API with streaming."""
+    """Fetch response from Ollama API with stream."""
     try:
         payload = {
             "model": model_name,
